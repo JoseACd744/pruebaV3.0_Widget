@@ -1,0 +1,19 @@
+{
+  "widget": {
+    "name": "Salesbot Webhook Widget",
+    "short_description": "Executes webhooks with parameters",
+    "description": "A widget to execute webhooks from Salesbot with parameters",
+    "tour_description": "Follow the steps to configure the webhook settings."
+  },
+  "settings": {
+    "webhook_url": "Webhook URL",
+    "name": "Name",
+    "requestBody": "Request body (show handler variables available)",
+    "button_title": "Send to Webhook",
+    "button_caption": "Click to send data",
+    "add_field_button": "Add Field",
+    "remove_field": "Remove",
+    "key": "Key",
+    "value": "Value"
+  }
+}
