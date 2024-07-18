@@ -1,10 +1,11 @@
 {
   "widget": {
-      "name": "Budget Calculator",
-      "short_description": "Calculate your budget",
-      "description": "Calculates budget based on users, months, and plan."
+    "name": "Budget Calculator",
+    "short_description": "Calculates budget based on Users, Months, and Plan.",
+    "description": "Calculates budget based on Users, Months, and Plan.",
+    "tour_description": "Tour of the Budget Calculator"
   },
   "settings": {
-      "button_text": "Calculate Budget"
+    "api_key": "API Key"
   }
 }

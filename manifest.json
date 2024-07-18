@@ -1,21 +1,25 @@
 {
   "widget": {
-    "name": "i18n.widget.name",
-    "description": "i18n.widget.description",
-    "short_description": "i18n.widget.short_description",
+    "name": "widget.name",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
     "version": "1.0.0",
     "interface_version": 2,
-    "locale": ["en", "es"],
+    "init_once": true,
+    "locale": [
+      "en",
+      "es"
+    ],
     "installation": true
   },
   "locations": [
     "lcard-1"
   ],
   "settings": {
-    "button_text": {
-      "name": "i18n.settings.button_text",
+    "api_key": {
+      "name": "settings.api_key",
       "type": "text",
-      "required": true
+      "required": false
     }
   }
 }
