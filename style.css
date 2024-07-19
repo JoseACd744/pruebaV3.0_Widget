@@ -1,17 +1,31 @@
 .km-form {
-  padding: 10px;
+  padding: 15px;
   background: #f9f9f9;
   border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-#fetch-lead-data-btn {
-  padding: 10px;
+#calculate-btn {
+  padding: 10px 20px;
   background: #007bff;
   color: #fff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-#lead-data-display {
-  margin-top: 10px;
+#calculate-btn:hover {
+  background: #0056b3;
+}
+
+#calculation-result {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+#calculation-result p {
+  margin: 0;
 }
