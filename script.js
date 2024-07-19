@@ -81,12 +81,37 @@ define(['jquery'], function ($) {
 
         var result = meses * usuarios * planValue;
 
+        // Actualizar el campo lead[PRICE]
+        APP.data.current_card.fields_hider.model.attributes['lead[PRICE]'] = result;
+
+        // Guardar los cambios
+        self.saveLeadPrice(result);
+
+        // Mostrar el resultado en la pantalla
         var displayDiv = $('#calculation-result');
         displayDiv.empty();
         displayDiv.append('<p>Calculation Result: ' + result + '</p>');
       } else {
         console.error('Lead data or attributes are undefined');
       }
+    };
+
+    this.saveLeadPrice = function(price) {
+      var leadData = APP.data.current_card;
+      $.ajax({
+        url: '/ajax/leads/detail/' + leadData.id,
+        method: 'POST',
+        data: {
+          'id': leadData.id,
+          'price': price
+        },
+        success: function(response) {
+          console.log('Lead price updated successfully:', response);
+        },
+        error: function(response) {
+          console.error('Error updating lead price:', response);
+        }
+      });
     };
 
     return this;
