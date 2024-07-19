@@ -5,7 +5,16 @@
   border-radius: 5px;
 }
 
-#calculate-btn {
+.km-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.km-form button {
   padding: 10px 20px;
   background: #007bff;
   color: #fff;
@@ -16,7 +25,7 @@
   margin-top: 10px;
 }
 
-#calculate-btn:hover {
+.km-form button:hover {
   background: #0056b3;
 }
 

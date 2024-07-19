@@ -11,8 +11,11 @@ define(['jquery'], function ($) {
         return true;
       },
       bind_actions: function () {
-        $('#calculate-btn').on('click', function () {
+        $(document).on('click', '#calculate-btn', function () {
           self.calculate();
+        });
+        $(document).on('click', '#send-webhook-btn', function () {
+          self.sendWebhook();
         });
         return true;
       },
@@ -23,7 +26,10 @@ define(['jquery'], function ($) {
             html: 'Lead Data Calculator'
           },
           body: '<div class="km-form">\
+                   <label for="webhook-url">Webhook URL:</label>\
+                   <input type="text" id="webhook-url" placeholder="Enter Webhook URL"/>\
                    <button id="calculate-btn">Calculate</button>\
+                   <button id="send-webhook-btn">Send to Webhook</button>\
                    <div id="calculation-result"></div>\
                  </div>',
           render: ''
@@ -59,7 +65,7 @@ define(['jquery'], function ($) {
 
         console.log('Meses:', meses);
         console.log('Usuarios:', usuarios);
-        console.log('Plan Kommo:', planKommo);
+        console.log('Plan Kommo:', planKommo);  
 
         var planValue;
         switch (planKommo) {
@@ -81,11 +87,8 @@ define(['jquery'], function ($) {
 
         var result = meses * usuarios * planValue;
 
-        // Actualizar el campo lead[PRICE]
-        APP.data.current_card.fields_hider.model.attributes['lead[PRICE]'] = result;
-
-        // Guardar los cambios
-        self.saveLeadPrice(result);
+        // Guardar el resultado en una variable para usarlo en el webhook
+        self.calculationResult = result;
 
         // Mostrar el resultado en la pantalla
         var displayDiv = $('#calculation-result');
@@ -96,20 +99,28 @@ define(['jquery'], function ($) {
       }
     };
 
-    this.saveLeadPrice = function(price) {
-      var leadData = APP.data.current_card;
+    this.sendWebhook = function() {
+      var webhookUrl = $('#webhook-url').val();
+      if (!webhookUrl) {
+        alert('Please enter a valid Webhook URL');
+        return;
+      }
+
+      var payload = {
+        id: APP.data.current_card.id,
+        price: self.calculationResult
+      };
+
       $.ajax({
-        url: '/ajax/leads/detail/' + leadData.id,
+        url: webhookUrl,
         method: 'POST',
-        data: {
-          'id': leadData.id,
-          'price': price
-        },
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
         success: function(response) {
-          console.log('Lead price updated successfully:', response);
+          console.log('Webhook sent successfully:', response);
         },
         error: function(response) {
-          console.error('Error updating lead price:', response);
+          console.error('Error sending webhook:', response);
         }
       });
     };
