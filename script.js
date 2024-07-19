@@ -1,61 +1,54 @@
-define(['jquery'], function($) {
-  var CustomWidget = function() {
+define(['jquery'], function ($) {
+  var CustomWidget = function () {
     var self = this;
 
     this.callbacks = {
-      settings: function() {},
-      init: function() {
+      settings: function () {
         return true;
       },
-      bind_actions: function() {
-        if (APP.isCard()) {
-          $('#log-lead-data').on('click', function() {
-            self.logLeadData();
-          });
-        }
+      init: function () {
         return true;
       },
-      render: function() {
-        self.render_template({
-          caption: {
-            class_name: 'js-widget-caption',
-            html: ''
-          },
-          body: '',
-          render: function() {
-            return new Promise(function(resolve) {
-              $.get(self.params.path + '/templates/template.twig', function(template) {
-                var html = Twig.twig({
-                  data: template
-                }).render({
-                  button_text: self.i18n('button_text')
-                });
-                resolve(html);
-              });
-            });
-          }
+      bind_actions: function () {
+        $('#fetch-lead-data-btn').on('click', function () {
+          self.fetchLeadData();
         });
         return true;
       },
-      dpSettings: function() {},
-      advancedSettings: function() {},
-      destroy: function() {}
+      render: function () {
+        self.render_template({
+          caption: {
+            class_name: 'js-km-caption',
+            html: 'Lead Data Fetcher'
+          },
+          body: '<div class="km-form">\
+                   <button id="fetch-lead-data-btn">Fetch Lead Data</button>\
+                   <div id="lead-data-display"></div>\
+                 </div>',
+          render: ''
+        });
+        return true;
+      },
+      onSave: function () {
+        return true;
+      },
+      leads: {
+        selected: function () {
+          return true;
+        }
+      },
+      destroy: function () {}
     };
 
-    this.logLeadData = function() {
-      if (APP.data.current_card) {
-        var leadData = {
-          id: APP.data.current_card.id,
-          model: APP.data.current_card.model.toJSON() // Convert the backbone model to JSON
-        };
-        console.log(leadData);
-      } else {
-        console.log("No lead data available");
-      }
+    this.fetchLeadData = function () {
+      var leadData = APP.data.current_card;
+      var displayDiv = $('#lead-data-display');
+      displayDiv.empty();
+      displayDiv.append('<p>Lead ID: ' + leadData.id + '</p>');
+      displayDiv.append('<p>Attributes: ' + JSON.stringify(leadData.attributes) + '</p>');
     };
 
     return this;
   };
-
   return CustomWidget;
 });

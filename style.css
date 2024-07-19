@@ -1,16 +1,17 @@
-.widget-content {
-    padding: 10px;
-  }
-  
-  #log-lead-data {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #log-lead-data:hover {
-    background-color: #0056b3;
-  }
-  
+.km-form {
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+#fetch-lead-data-btn {
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#lead-data-display {
+  margin-top: 10px;
+}
