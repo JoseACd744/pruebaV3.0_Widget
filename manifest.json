@@ -1,8 +1,8 @@
 {
   "widget": {
-    "name": "widget.name",
-    "description": "widget.description",
-    "short_description": "widget.short_description",
+    "name": "Salesbot Webhook Widget",
+    "description": "A widget to execute webhooks from Salesbot with parameters",
+    "short_description": "Executes webhooks with parameters",
     "version": "1.0.0",
     "interface_version": 2,
     "init_once": true,
@@ -14,7 +14,7 @@
     }
   },
   "locations": [
-    "salesbot_designer"
+    "lcard-1"
   ],
   "salesbot_designer": {
     "handler_code": {
@@ -33,28 +33,24 @@
           "manual": true
         },
         "webhook_url": {
-          "name": "settings.webhook_url",
+          "name": "salesbot.webhook_url",
+          "type": "text",
+          "required": true
+        },
+        "custom_field1": {
+          "name": "salesbot.custom_field1",
           "type": "text",
           "required": false
         },
-        "name": {
-          "name": "settings.name",
+        "custom_field2": {
+          "name": "salesbot.custom_field2",
           "type": "text",
           "required": false
         }
       }
     }
   },
-  "settings": {
-    "webhook_url": {
-      "name": "settings.webhook_url",
-      "type": "text",
-      "required": false
-    },
-    "name": {
-      "name": "settings.name",
-      "type": "text",
-      "required": false
-    }
+  "advanced": {
+    "title": "advanced.title"
   }
 }

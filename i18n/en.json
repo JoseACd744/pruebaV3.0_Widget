@@ -1,19 +1,30 @@
 {
-  "widget": {
-    "name": "Salesbot Webhook Widget",
-    "short_description": "Executes webhooks with parameters",
-    "description": "A widget to execute webhooks from Salesbot with parameters",
-    "tour_description": "Follow the steps to configure the webhook settings."
-  },
-  "settings": {
-    "webhook_url": "Webhook URL",
-    "name": "Name",
-    "requestBody": "Request body (show handler variables available)",
-    "button_title": "Send to Webhook",
-    "button_caption": "Click to send data",
-    "add_field_button": "Add Field",
-    "remove_field": "Remove",
-    "key": "Key",
-    "value": "Value"
+    "widget": {
+      "name": "Salesbot Webhook Widget",
+      "short_description": "Executes webhooks with parameters",
+      "description": "A widget to execute webhooks from Salesbot with parameters",
+      "tour_description": "Follow the steps to configure the webhook settings."
+    },
+    "settings": {
+      "webhook_url": "Webhook URL",
+      "custom_field1": "Custom Field 1",
+      "custom_field2": "Custom Field 2",
+      "button_title": "Send to Webhook",
+      "button_caption": "Click to send data"
+    },
+    "salesbot": {
+      "handler_name": "Webhook Handler",
+      "button_title": "Send to Webhook",
+      "button_caption": "Click to send data",
+      "text": "Text",
+      "number": "Number",
+      "url": "URL"
+    },
+    "dp": {
+      "message": "Message"
+    },
+    "advanced": {
+      "title": "Advanced Settings"
+    }
   }
-}
+  

@@ -1,19 +1,30 @@
 {
-  "widget": {
-    "name": "Widget de Webhook para Salesbot",
-    "short_description": "Ejecuta webhooks con parámetros",
-    "description": "Un widget para ejecutar webhooks desde Salesbot con parámetros",
-    "tour_description": "Siga los pasos para configurar la configuración del webhook."
-  },
-  "settings": {
-    "webhook_url": "URL del Webhook",
-    "name": "Nombre",
-    "requestBody": "Cuerpo de la solicitud (mostrar variables disponibles del handler)",
-    "button_title": "Enviar al Webhook",
-    "button_caption": "Haga clic para enviar datos",
-    "add_field_button": "Agregar Campo",
-    "remove_field": "Eliminar",
-    "key": "Clave",
-    "value": "Valor"
+    "widget": {
+      "name": "Widget de Webhook para Salesbot",
+      "short_description": "Ejecuta webhooks con parámetros",
+      "description": "Un widget para ejecutar webhooks desde Salesbot con parámetros",
+      "tour_description": "Siga los pasos para configurar la configuración del webhook."
+    },
+    "settings": {
+      "webhook_url": "URL del Webhook",
+      "custom_field1": "Campo Personalizado 1",
+      "custom_field2": "Campo Personalizado 2",
+      "button_title": "Enviar al Webhook",
+      "button_caption": "Haga clic para enviar datos"
+    },
+    "salesbot": {
+      "handler_name": "Gestor de Webhook",
+      "button_title": "Enviar al Webhook",
+      "button_caption": "Haga clic para enviar datos",
+      "text": "Texto",
+      "number": "Número",
+      "url": "URL"
+    },
+    "dp": {
+      "message": "Mensaje"
+    },
+    "advanced": {
+      "title": "Configuraciones Avanzadas"
+    }
   }
-}
+  
