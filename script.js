@@ -111,16 +111,17 @@ define(['jquery'], function ($) {
         price: self.calculationResult
       };
 
-      // Enviar el webhook usando crmpost
-      crmpost({
+      // Enviar el webhook usando $.ajax
+      $.ajax({
         url: webhookUrl,
-        data: JSON.stringify(payload),
+        method: 'POST',
         contentType: 'application/json',
+        data: JSON.stringify(payload),
         success: function(response) {
           console.log('Webhook sent successfully:', response);
         },
-        error: function(response) {
-          console.error('Error sending webhook:', response);
+        error: function(xhr, status, error) {
+          console.error('Error sending webhook:', error);
         }
       });
     };
