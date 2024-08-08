@@ -116,6 +116,7 @@ define(['jquery'], function ($) {
         url: webhookUrl,
         method: 'POST',
         contentType: 'application/json',
+        dataType: 'json',
         data: JSON.stringify(payload),
         success: function(response) {
           console.log('Webhook sent successfully:', response);
