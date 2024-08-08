@@ -27,7 +27,7 @@ define(['jquery'], function ($) {
           },
           body: '<div class="km-form">\
                    <label for="webhook-url">Webhook URL:</label>\
-                   <input type="text" id="webhook-url" placeholder="Enter Webhook URL (optional)"/>\
+                   <input type="text" id="webhook-url" placeholder="Enter Webhook URL"/>\
                    <button id="calculate-btn">Calculate</button>\
                    <button id="send-webhook-btn">Send to Webhook</button>\
                    <div id="calculation-result"></div>\
@@ -100,7 +100,7 @@ define(['jquery'], function ($) {
     };
 
     this.sendWebhook = function() {
-      var webhookUrl = $('#webhook-url').val() || 'http://localhost:8080/api/send';
+      var webhookUrl = $('#webhook-url').val();
       if (!webhookUrl) {
         alert('Please enter a valid Webhook URL');
         return;
@@ -111,12 +111,11 @@ define(['jquery'], function ($) {
         price: self.calculationResult
       };
 
-      $.ajax({
+      // Enviar el webhook usando crmpost
+      crmpost({
         url: webhookUrl,
-        method: 'POST',
-        contentType: 'application/json',
         data: JSON.stringify(payload),
-        crossDomain: true,
+        contentType: 'application/json',
         success: function(response) {
           console.log('Webhook sent successfully:', response);
         },
